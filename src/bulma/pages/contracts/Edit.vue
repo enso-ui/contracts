@@ -18,7 +18,7 @@
                         <div class="column  is-centered">
                             <documents :id="$route.params.contract"
                                 ref="documents"
-                                type="App\Models\Contract"
+                                type="LaravelEnso\Contracts\app\Models\Contract"
                                 @update="$set(count, 'Files', $refs.documents.count)"/>
                         </div>
                     </tab>

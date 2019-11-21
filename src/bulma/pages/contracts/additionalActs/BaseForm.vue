@@ -18,14 +18,14 @@
                         @input="$refs.form.field('expires_at').meta.hidden = !$event"/>
                 </template>
             </enso-form>
-            <accessories v-if="ready" class="box accessories">
+            <accessories v-if="ready && isEdit" class="box accessories">
                 <template slot-scope="{ count }">
                     <tab id="Files"
                          keep-alive>
                         <div class="column is-centered">
                             <documents :id="contractId"
                                 ref="documents"
-                                type="App\Models\AdditionalAct"
+                                type="LaravelEnso\Contracts\app\Models\AdditionalAct"
                                 @update="$set(count, 'Files', $refs.documents.count)"/>
                         </div>
                     </tab>
