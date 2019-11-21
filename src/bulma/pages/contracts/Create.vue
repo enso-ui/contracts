@@ -1,0 +1,20 @@
+<template>
+    <div class="columns is-centered">
+        <div class="column is-three-quarters-desktop is-full-touch">
+            <enso-form class="box has-background-light raises-on-hover"
+                :params="{ type: $route.params.type || 'client' }"/>
+        </div>
+    </div>
+</template>
+
+<script>
+
+import { EnsoForm } from '@enso-ui/bulma';
+
+export default {
+    name: 'Create',
+
+    components: { EnsoForm },
+};
+
+</script>
