@@ -41,13 +41,13 @@
                     </p>
             </div>
             <div class="columns is-multiline has-margin-top-large">
-            <div v-for="additionalAct in filteredAdditionalActs"
+            <div v-for="(additionalAct, index) in filteredAdditionalActs"
                  :key="additionalAct.id"
                  class="column is-half-touch is-half-desktop is-one-third-widescreen">
                 <card :additional-act="additionalAct"
                     @click="edit(additionalAct)"
                     @edit="edit(additionalAct)"
-                    @delete="remove(additionalAct)"/>
+                    @delete="remove(index)"/>
             </div>
         </div>
         </div>
@@ -116,10 +116,13 @@ export default {
         edit(additionalAct) {
             this.additionalAct = additionalAct;
         },
-        remove(additionalAct) {
+        remove(index) {
             axios.delete(this.route('contracts.additionalActs.destroy',
-                { additionalAct: additionalAct.id }))
-                .then(() => this.deleteFromArray(additionalAct))
+                { additionalAct: this.additionalActs[index].id }))
+                .then(() => {
+                    this.additionalActs.splice(index, 1);
+                    this.$emit('update', this.additionalActs.length);
+                })
                 .catch(error => this.errorHandler(error));
         },
         update() {
@@ -129,11 +132,6 @@ export default {
             if (this.$refs.form.extendsContract) {
                 this.$emit('expires', this.$refs.form.expiresAt);
             }
-        },
-        deleteFromArray(additionalAct) {
-            const index = this.additionalActs.findIndex(({ id }) => id === additionalAct.id);
-            this.additionalActs.splice(index, 1);
-            this.$emit('update', this.additionalActs.length);
         },
     },
 };
