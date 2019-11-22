@@ -23,7 +23,7 @@
                     <tab id="Files"
                          keep-alive>
                         <div class="column is-centered">
-                            <documents :id="contractId"
+                            <documents :id="additionalAct.id"
                                 ref="documents"
                                 type="LaravelEnso\Contracts\app\Models\AdditionalAct"
                                 @update="$set(count, 'Files', $refs.documents.count)"/>
