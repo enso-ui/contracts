@@ -3,13 +3,6 @@
         <div v-if="ready"
              class="columns is-centered is-multiline">
             <div class="column">
-                <enso-select-filter v-model="params.businessDomainIds"
-                    multiple
-                    class="box raises-on-hover"
-                    source="administration.businessDomains.options"
-                    :name="i18n('Business Domain')"/>
-            </div>
-            <div class="column">
                 <enso-select-filter v-model="filters.contracts.supplier_id"
                     class="box raises-on-hover"
                     source="administration.companies.options"
@@ -38,11 +31,12 @@
             @create-supplier="create('supplier')"
             @create-client="create('client')"
             @reset="$refs.filterState.reset()">
-            <template v-slot:businessDomains="{ row }">
-                <span v-for="businessDomain in row.businessDomainsArray"
-                    :key="businessDomain"
-                    class="tag is-table-tag is-info has-margin-right-small">
-                    {{ businessDomain }}
+            <template v-slot:additionalActs="{ row }">
+                <span class="icon has-text-primary">
+                        <fa icon="file"/>
+                </span>
+                <span>
+                    {{ row.additionalActCount }}
                 </span>
             </template>
         </enso-table>
@@ -89,7 +83,6 @@ export default {
                 },
             },
             params: {
-                businessDomainIds: [],
                 dateInterval: 'nextThirtyDays',
             },
         };

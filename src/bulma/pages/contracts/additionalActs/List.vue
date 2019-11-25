@@ -57,8 +57,8 @@
             :additional-act="additionalAct"
             :contract-id="contractId"
             @submit="update"
-            @close="additionalAct = null"
-            @destroy="additionalAct = null"/>
+            @close="updateDocs(); additionalAct = null"
+            @destroy="updateDocs(); additionalAct = null"/>
     </div>
 </template>
 
@@ -125,17 +125,21 @@ export default {
                 })
                 .catch(error => this.errorHandler(error));
         },
-        update() {
+        updateDocs() {
+            this.additionalAct.documentCount = this.$refs.form.documentCount;
+        },
+        update($event) {
             this.fetch();
-            this.additionalAct = null;
+            this.updateDocs();
 
             if (this.$refs.form.extendsContract) {
                 this.$emit('expires', this.$refs.form.expiresAt);
             }
+
+            this.additionalAct = this.additionalAct.id
+                ? null
+                : $event.additionalAct;
         },
     },
 };
 </script>
-
-<style lang="scss" scoped>
-</style>

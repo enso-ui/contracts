@@ -8,6 +8,11 @@
             class="title is-5 filename has-text-centered">
             {{ additionalAct.title }}
         </h5>
+        <figure class="files">
+            <span class="tag is-dark counter">
+                {{additionalAct.documentCount}}
+            </span>
+        </figure>
         <p v-tooltip="timeFromNow(additionalAct.signed_at)"
            class="has-text-centered">
             <span class="icon is-small">
@@ -107,6 +112,12 @@ export default {
             position: absolute;
             top: .6em;
             left: .6em;
+        }
+
+        .files {
+            position: absolute;
+            top: .6em;
+            right: .6em;
         }
 
         .details {

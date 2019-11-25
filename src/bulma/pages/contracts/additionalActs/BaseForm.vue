@@ -84,6 +84,11 @@ export default {
         extendsContract() {
             return this.$refs.form.field('extends_contract').value;
         },
+        documentCount() {
+            return this.isEdit
+                ? this.$refs.documents.count
+                : 0;
+        },
     },
 
     methods: {
