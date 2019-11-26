@@ -3,6 +3,11 @@
         <div v-if="ready"
              class="columns is-centered is-multiline">
             <div class="column">
+                <enso-input-filter v-model="params.contract_body"
+                    class="box raises-on-hover"
+                    :name="i18n('Contract Body')"/>
+            </div>
+            <div class="column">
                 <enso-select-filter v-model="filters.contracts.supplier_id"
                     class="box raises-on-hover"
                     source="administration.companies.options"
@@ -52,14 +57,14 @@
 
 <script>
 import {
-    EnsoTable, EnsoDateFilter, EnsoSelectFilter, FilterState,
+    EnsoTable, EnsoDateFilter, EnsoSelectFilter, FilterState, EnsoInputFilter
 } from '@enso-ui/bulma';
 
 export default {
     name: 'Index',
 
     components: {
-        EnsoTable, EnsoDateFilter, FilterState, EnsoSelectFilter,
+        EnsoTable, EnsoDateFilter, FilterState, EnsoSelectFilter, EnsoInputFilter
     },
 
     inject: ['i18n', 'route'],
@@ -84,6 +89,7 @@ export default {
             },
             params: {
                 dateInterval: 'nextThirtyDays',
+                contract_body: '',
             },
         };
     },
