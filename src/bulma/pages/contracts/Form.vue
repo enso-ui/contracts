@@ -4,8 +4,18 @@
             <enso-form ref="form"
                 disable-state
                 class="box has-background-light raises-on-hover"
-                @loaded="ready = true"/>
-            <accessories v-if="ready">
+                @loaded="ready = true"
+                :params="params"
+                :path="path">
+                <template v-slot:expires_at="props">
+                    <form-field v-bind="props"/>
+                </template>
+                <template v-slot:renews_automatically="props">
+                    <form-field v-bind="props"
+                        @input="$refs.form.field('expires_at').meta.hidden = $event"/>
+                </template>
+            </enso-form>
+            <accessories v-if="isEdit && ready">
                 <template slot-scope="{ count }">
                     <tab id="Additional Acts"
                          keep-alive>
@@ -29,12 +39,14 @@
 </template>
 
 <script>
-import { EnsoForm, Tab } from '@enso-ui/bulma';
+import { EnsoForm, Tab, FormField, } from '@enso-ui/bulma';
 import { Accessories, Documents } from '@enso-ui/accessories/bulma';
 import AdditionalActs from './additionalActs/List.vue';
 
 export default {
-    name: 'Edit',
+    name: 'Form',
+
+    inject: ['route'],
 
     components: {
         EnsoForm,
@@ -42,10 +54,30 @@ export default {
         Documents,
         Tab,
         AdditionalActs,
+        FormField,
     },
 
     data: () => ({
         ready: false,
     }),
+
+    computed: {
+        isEdit() {
+            return this.$route.params.contract !== undefined;
+        },
+        path() {
+            return this.isEdit
+                ? this.route('contracts.edit', {contract: this.$route.params.contract})
+                : this.route('contracts.create');
+        },
+        params() {
+            return this.isEdit
+                ? {}
+                : {type: this.$route.params.type || 'client'};
+        },
+    },
+
+    methods: {
+    },
 };
 </script>
