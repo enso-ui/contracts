@@ -5,7 +5,9 @@
             <div class="column">
                 <enso-input-filter v-model="params.contract_body"
                     class="box raises-on-hover"
-                    :name="i18n('Contract Body')"/>
+                    :label="i18n('Text')"
+                    :name="i18n('Contract Body')"
+                />
             </div>
             <div class="column">
                 <enso-select-filter v-model="filters.contracts.supplier_id"
@@ -57,14 +59,14 @@
 
 <script>
 import {
-    EnsoTable, EnsoDateFilter, EnsoSelectFilter, FilterState, EnsoInputFilter
+    EnsoTable, EnsoDateFilter, EnsoSelectFilter, FilterState, EnsoInputFilter,
 } from '@enso-ui/bulma';
 
 export default {
     name: 'Index',
 
     components: {
-        EnsoTable, EnsoDateFilter, FilterState, EnsoSelectFilter, EnsoInputFilter
+        EnsoTable, EnsoDateFilter, FilterState, EnsoSelectFilter, EnsoInputFilter,
     },
 
     inject: ['i18n', 'route'],
