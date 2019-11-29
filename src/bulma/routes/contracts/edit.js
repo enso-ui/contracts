@@ -1,9 +1,9 @@
-const ContractEdit = () => import('../../pages/contracts/Edit.vue');
+const ContractForm = () => import('../../pages/contracts/Form.vue');
 
 export default {
     name: 'contracts.edit',
     path: ':contract/edit',
-    component: ContractEdit,
+    component: ContractForm,
     meta: {
         breadcrumb: 'edit',
         title: 'Edit Contract',
