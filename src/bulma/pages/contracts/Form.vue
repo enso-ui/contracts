@@ -19,7 +19,7 @@
                 <template slot-scope="{ count }">
                     <tab id="Additional Acts"
                          keep-alive>
-                        <additional-acts :contract-id="$route.params.contract"
+                        <additional-acts :contract="$refs.form.formData"
                             @update="$set(count, 'Additional Acts', $event)"
                             @expires="$refs.form.field('expires_at').value = $event"/>
                     </tab>

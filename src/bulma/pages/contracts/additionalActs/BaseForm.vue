@@ -13,7 +13,7 @@
                     <form-field v-bind="props"
                         :field="field"/>
                 </template>
-                <template v-slot:extends_contract="props">
+                <template v-if="!contract.renews_automatically" v-slot:extends_contract="props">
                     <form-field v-bind="props"
                         @input="$refs.form.field('expires_at').meta.hidden = !$event"/>
                 </template>
@@ -58,7 +58,8 @@ export default {
             required: true,
             defaults: {},
         },
-        contractId: {
+        contract: {
+            type: Object,
             required: true,
         },
     },
@@ -93,7 +94,7 @@ export default {
 
     methods: {
         init({ form }) {
-            form.field('contract_id').value = this.contractId;
+            form.field('contract_id').value = this.$route.params.contract;
             this.ready = true;
         },
         date(date) {

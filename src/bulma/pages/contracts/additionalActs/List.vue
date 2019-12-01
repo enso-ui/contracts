@@ -55,7 +55,7 @@
         <base-form v-if="additionalAct"
             ref="form"
             :additional-act="additionalAct"
-            :contract-id="contractId"
+            :contract="contract"
             @submit="update"
             @close="updateDocs(); additionalAct = null"
             @destroy="updateDocs(); additionalAct = null"/>
@@ -75,7 +75,8 @@ export default {
     components: { Card, BaseForm },
 
     props: {
-        contractId: {
+        contract: {
+            type: Object,
             required: true,
         },
     },
@@ -104,7 +105,7 @@ export default {
     methods: {
         fetch() {
             axios.get(this.route('contracts.additionalActs.index'), {
-                params: { contractId: this.contractId },
+                params: { contractId: this.$route.params.contract },
             }).then(({ data }) => {
                 this.additionalActs = data;
                 this.$emit('update', this.additionalActs.length);
