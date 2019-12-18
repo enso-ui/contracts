@@ -7,7 +7,7 @@
                 :path="path"
                 disable-state
                 v-on="$listeners"
-                @form="init">
+                @ready="init">
                 <template v-slot:expires_at="props">
                     <form-field :field="field"
                         v-bind="props"/>
