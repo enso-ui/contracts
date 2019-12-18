@@ -2,7 +2,7 @@
     <div class="box has-background-light raises-on-hover file-box has-padding-large">
         <figure class="image is-32x32 avatar">
             <img class="is-rounded"
-                 :src="route('core.avatars.show', additionalAct.owner.avatarId)">
+                :src="route('core.avatars.show', additionalAct.owner.avatarId)">
         </figure>
         <h5 v-tooltip="additionalAct.title"
             class="title is-5 filename has-text-centered">
@@ -22,17 +22,17 @@
         </p>
         <div class="has-text-centered has-margin-top-medium">
             <div class="details">
-                <a v-if="canAccess('contracts.additionalActs.edit')"
-                   class="button is-naked is-small"
-                   @click.stop="$emit('edit')">
+                <a class="button is-naked is-small"
+                    @click.stop="$emit('edit')"
+                    v-if="canAccess('contracts.additionalActs.edit')">
                     <span class="icon">
                         <fa icon="pencil-alt"/>
                     </span>
                 </a>
                 <confirmation placement="top"
-                              @show="confirmation = true"
-                              @hide="confirmation = false"
-                              @confirm="$emit('delete', additionalAct)">
+                    @show="confirmation = true"
+                    @hide="confirmation = false"
+                    @confirm="$emit('delete', additionalAct)">
                     <a v-if="canAccess('contracts.additionalActs.destroy')"
                        class="button is-naked is-small">
                         <span class="icon">

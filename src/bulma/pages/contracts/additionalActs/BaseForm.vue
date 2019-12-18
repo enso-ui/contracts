@@ -1,27 +1,28 @@
 <template>
     <modal class="additional-act-modal"
-           show
-           v-on="$listeners">
+        show
+        v-on="$listeners">
         <div class="has-background-white">
-            <enso-form ref="form"
-                class="box has-background-light"
+            <enso-form class="box has-background-light"
                 :path="path"
                 disable-state
                 v-on="$listeners"
-                @ready="init">
+                @form="init">
                 <template v-slot:expires_at="props">
-                    <form-field v-bind="props"
-                        :field="field"/>
+                    <form-field :field="field"
+                        v-bind="props"/>
                 </template>
-                <template v-if="!contract.renews_automatically" v-slot:extends_contract="props">
+                <template v-slot:extends_contract="props"
+                    v-if="!contract.renews_automatically" >
                     <form-field v-bind="props"
-                        @input="$refs.form.field('expires_at').meta.hidden = !$event"/>
+                        @input="form.field('expires_at').meta.hidden = !$event"/>
                 </template>
             </enso-form>
-            <accessories v-if="ready && isEdit" class="box accessories">
+            <accessories class="box accessories"
+                v-if="form && isEdit">
                 <template slot-scope="{ count }">
                     <tab id="Files"
-                         keep-alive>
+                        keep-alive>
                         <div class="column is-centered">
                             <documents :id="additionalAct.id"
                                 ref="documents"
@@ -66,7 +67,7 @@ export default {
 
     data: () => ({
         confirm: null,
-        ready: false,
+        form: false,
     }),
 
     computed: {
@@ -80,10 +81,10 @@ export default {
                 : this.route('contracts.additionalActs.create');
         },
         expiresAt() {
-            return this.$refs.form.field('expires_at').value;
+            return this.form && this.form.field('expires_at').value;
         },
         extendsContract() {
-            return this.$refs.form.field('extends_contract').value;
+            return this.form && this.form.field('extends_contract').value;
         },
         documentCount() {
             return this.isEdit
@@ -94,8 +95,8 @@ export default {
 
     methods: {
         init({ form }) {
-            form.field('contract_id').value = this.$route.params.contract;
-            this.ready = true;
+            this.form = form;
+            this.form.field('contract_id').value = this.$route.params.contract;
         },
         date(date) {
             return format(date, 'Y-m-d');

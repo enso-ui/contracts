@@ -1,12 +1,12 @@
 <template>
-<div class="columns is-centered">
+    <div class="columns is-centered">
         <div class="column is-three-quarters">
-            <enso-form ref="form"
-                disable-state
+            <enso-form disable-state
                 class="box has-background-light raises-on-hover"
                 @loaded="ready = true"
                 :params="params"
-                :path="path">
+                :path="path"
+                ref="form">
                 <template v-slot:expires_at="props">
                     <form-field v-bind="props"/>
                 </template>
@@ -75,9 +75,6 @@ export default {
                 ? {}
                 : {type: this.$route.params.type || 'client'};
         },
-    },
-
-    methods: {
     },
 };
 </script>

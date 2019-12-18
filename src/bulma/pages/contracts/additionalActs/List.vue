@@ -2,56 +2,55 @@
     <div class="additional-act-wrapper">
         <div>
             <div class="field is-grouped">
-                    <p class="control">
-                        <a v-if="canAccess('contracts.additionalActs.create')"
-                           class="button is-rounded is-small is-bold is-info"
-                           @click="create()">
-                            <span>
-                                {{ i18n('New') }}
-                            </span>
-                            <span class="icon">
-                                <fa icon="plus"/>
-                            </span>
-                        </a>
-                    </p>
-                    <p class="control has-icons-left has-icons-right is-expanded">
-                        <input v-model="query"
-                               class="input is-rounded is-small is-expanded"
-                               type="text"
-                               :placeholder="i18n('Filter')">
-                        <span class="icon is-small is-left">
-                            <fa icon="search"/>
+                <p class="control">
+                    <a class="button is-rounded is-small is-bold is-info"
+                        @click="create()"
+                        v-if="canAccess('contracts.additionalActs.create')">
+                        <span>
+                            {{ i18n('New') }}
                         </span>
-                        <span v-if="query"
-                              class="icon is-small is-right clear-button"
-                              @click="query = ''">
-                            <a class="delete is-small"/>
+                        <span class="icon">
+                            <fa icon="plus"/>
                         </span>
-                    </p>
-                    <p class="control">
-                        <a class="button is-rounded is-small is-bold has-margin-left-medium"
-                           @click="fetch()">
-                            <span>
-                                {{ i18n('Reload') }}
-                            </span>
-                            <span class="icon">
-                                <fa icon="sync"/>
-                            </span>
-                        </a>
-                    </p>
+                    </a>
+                </p>
+                <p class="control has-icons-left has-icons-right is-expanded">
+                    <input v-model="query"
+                        class="input is-rounded is-small is-expanded"
+                        type="text"
+                        :placeholder="i18n('Filter')">
+                    <span class="icon is-small is-left">
+                        <fa icon="search"/>
+                    </span>
+                    <span class="icon is-small is-right clear-button"
+                        @click="query = ''"
+                        v-if="query">
+                        <a class="delete is-small"/>
+                    </span>
+                </p>
+                <p class="control">
+                    <a class="button is-rounded is-small is-bold has-margin-left-medium"
+                        @click="fetch()">
+                        <span>
+                            {{ i18n('Reload') }}
+                        </span>
+                        <span class="icon">
+                            <fa icon="sync"/>
+                        </span>
+                    </a>
+                </p>
             </div>
             <div class="columns is-multiline has-margin-top-large">
-            <div v-for="(additionalAct, index) in filteredAdditionalActs"
-                 :key="additionalAct.id"
-                 class="column is-half-touch is-half-desktop is-one-third-widescreen">
-                <card :additional-act="additionalAct"
-                    @click="edit(additionalAct)"
-                    @edit="edit(additionalAct)"
-                    @delete="remove(index)"/>
+                <div class="column is-half-touch is-half-desktop is-one-third-widescreen"
+                    v-for="(additionalAct, index) in filteredAdditionalActs"
+                    :key="additionalAct.id">
+                    <card :additional-act="additionalAct"
+                        @click="edit(additionalAct)"
+                        @edit="edit(additionalAct)"
+                        @delete="remove(index)"/>
+                </div>
             </div>
         </div>
-        </div>
-
         <base-form v-if="additionalAct"
             ref="form"
             :additional-act="additionalAct"
@@ -63,7 +62,6 @@
 </template>
 
 <script>
-
 import Card from './Card.vue';
 import BaseForm from './BaseForm.vue';
 
