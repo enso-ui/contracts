@@ -34,8 +34,8 @@
             :filters="filters"
             :intervals="intervals"
             :params="params"
-            @create-supplier="create('supplier')"
-            @create-client="create('client')"
+            @create-supplier="create(enums.contractParties.supplier)"
+            @create-client="create(enums.contractParties.client)"
             @reset="$refs.filterState.reset()">
             <template v-slot:additionalActs="{ row }">
                 <span class="icon has-text-primary">
@@ -60,6 +60,7 @@
 import {
     EnsoTable, EnsoDateFilter, EnsoSelectFilter, FilterState, EnsoInputFilter,
 } from '@enso-ui/bulma';
+import {mapState} from "vuex";
 
 export default {
     name: 'Index',
@@ -67,6 +68,8 @@ export default {
     components: {
         EnsoTable, EnsoDateFilter, FilterState, EnsoSelectFilter, EnsoInputFilter,
     },
+
+    computed: mapState(['enums']),
 
     inject: ['i18n', 'route'],
 

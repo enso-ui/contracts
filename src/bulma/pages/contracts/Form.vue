@@ -42,6 +42,7 @@
 import { EnsoForm, Tab, FormField, } from '@enso-ui/bulma';
 import { Accessories, Documents } from '@enso-ui/accessories/bulma';
 import AdditionalActs from './additionalActs/List.vue';
+import {mapState} from "vuex";
 
 export default {
     name: 'Form',
@@ -62,6 +63,7 @@ export default {
     }),
 
     computed: {
+        ...mapState(['enums']),
         isEdit() {
             return this.$route.params.contract !== undefined;
         },
@@ -73,7 +75,7 @@ export default {
         params() {
             return this.isEdit
                 ? {}
-                : {type: this.$route.params.type || 'client'};
+                : {type: this.$route.params.type || this.enums.contractParties.client};
         },
     },
 };
