@@ -26,7 +26,7 @@
                         <div class="column is-centered">
                             <documents :id="additionalAct.id"
                                 ref="documents"
-                                type="LaravelEnso\Contracts\app\Models\AdditionalAct"
+                                type="LaravelEnso\Contracts\App\Models\AdditionalAct"
                                 @update="$set(count, 'Files', $refs.documents.count)"/>
                         </div>
                     </tab>
