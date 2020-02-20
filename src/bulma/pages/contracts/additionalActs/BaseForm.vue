@@ -38,9 +38,9 @@
 
 <script>
 import { mapState } from 'vuex';
-import {
-    Modal, EnsoForm, Tab, FormField,
-} from '@enso-ui/bulma';
+import { EnsoForm, FormField } from '@enso-ui/forms/bulma';
+import { Modal } from '@enso-ui/modal/bulma';
+import { Tab } from '@enso-ui/tabs/bulma';
 import { Accessories, Documents } from '@enso-ui/accessories/bulma';
 import format from '@enso-ui/ui/src/modules/plugins/date-fns/format';
 

@@ -39,7 +39,8 @@
 </template>
 
 <script>
-import { EnsoForm, Tab, FormField, } from '@enso-ui/bulma';
+import { EnsoForm, FormField } from '@enso-ui/forms/bulma';
+import { Tab } from '@enso-ui/tabs/bulma';
 import { Accessories, Documents } from '@enso-ui/accessories/bulma';
 import AdditionalActs from './additionalActs/List.vue';
 import {mapState} from "vuex";

@@ -57,10 +57,10 @@
 </template>
 
 <script>
-import {
-    EnsoTable, EnsoDateFilter, EnsoSelectFilter, FilterState, EnsoInputFilter,
-} from '@enso-ui/bulma';
-import {mapState} from "vuex";
+import { mapState } from "vuex";
+import { EnsoTable } from '@enso-ui/tables/bulma';
+import { EnsoDateFilter, EnsoSelectFilter, EnsoInputFilter } from '@enso-ui/filters/bulma';
+import { FilterState } from '@enso-ui/filters/renderless';
 
 export default {
     name: 'Index',
