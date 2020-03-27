@@ -34,8 +34,8 @@
             :filters="filters"
             :intervals="intervals"
             :params="params"
-            @create-supplier="create(enums.contractParties.Supplier)"
-            @create-client="create(enums.contractParties.Client)"
+            @create-supplier="create(enums.parties.Supplier)"
+            @create-client="create(enums.parties.Client)"
             @reset="$refs.filterState.reset()">
             <template v-slot:additionalActs="{ row }">
                 <span class="icon has-text-primary">
