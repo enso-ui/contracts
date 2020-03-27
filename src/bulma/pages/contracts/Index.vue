@@ -74,7 +74,7 @@ export default {
     inject: ['i18n', 'route'],
 
     data: () => ({
-        apiVersion: 1.2,
+        apiVersion: 1.3,
         ready: false,
         filters: {
             contracts: {
@@ -91,7 +91,7 @@ export default {
             },
         },
         params: {
-            dateInterval: 'nextThirtyDays',
+            dateInterval: 'nextMonth',
             contract_body: '',
         },
     }),
