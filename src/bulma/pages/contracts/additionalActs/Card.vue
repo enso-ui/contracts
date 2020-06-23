@@ -2,7 +2,7 @@
     <div class="box has-background-light raises-on-hover file-box has-padding-large">
         <figure class="image is-32x32 avatar">
             <img class="is-rounded"
-                :src="route('core.avatars.show', additionalAct.owner.avatarId)">
+                :src="route('core.avatars.show', additionalAct.owner.avatar.id)">
         </figure>
         <h5 v-tooltip="additionalAct.title"
             class="title is-5 filename has-text-centered">
