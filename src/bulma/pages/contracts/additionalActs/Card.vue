@@ -1,9 +1,7 @@
 <template>
     <div class="box has-background-light raises-on-hover file-box has-padding-large">
-        <figure class="image is-32x32 avatar">
-            <img class="is-rounded"
-                :src="route('core.avatars.show', additionalAct.owner.avatarId)">
-        </figure>
+        <avatar class="is-32x32"
+            :user="additionalAct.owner"/>
         <h5 v-tooltip="additionalAct.title"
             class="title is-5 filename has-text-centered">
             {{ additionalAct.title }}
@@ -54,6 +52,7 @@ import { files } from '@enso-ui/mixins';
 import formatDistance from '@enso-ui/ui/src/modules/plugins/date-fns/formatDistance';
 import format from '@enso-ui/ui/src/modules/plugins/date-fns/format';
 import Confirmation from '@enso-ui/confirmation/bulma';
+import Avatar from '@enso-ui/ui/src/bulma/pages/administration/users/components/Avatar.vue';
 
 library.add(faEye, faPencilAlt);
 
@@ -64,7 +63,7 @@ export default {
 
     directives: { tooltip: VTooltip },
 
-    components: { Confirmation },
+    components: { Confirmation, Avatar },
 
     mixins: [files],
 
