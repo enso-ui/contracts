@@ -26,7 +26,7 @@
                         <div class="column is-centered">
                             <documents :id="additionalAct.id"
                                 ref="documents"
-                                type="LaravelEnso\Contracts\App\Models\AdditionalAct"
+                                type="LaravelEnso\Contracts\Models\AdditionalAct"
                                 @update="$set(count, 'Files', $refs.documents.count)"/>
                         </div>
                     </tab>
@@ -41,7 +41,7 @@ import { mapState } from 'vuex';
 import { EnsoForm, FormField } from '@enso-ui/forms/bulma';
 import { Modal } from '@enso-ui/modal/bulma';
 import { Tab } from '@enso-ui/tabs/bulma';
-import { Accessories, Documents } from '@enso-ui/accessories/bulma';
+import { Accessories, Documents } from '@enso-ui/bulma';
 import format from '@enso-ui/ui/src/modules/plugins/date-fns/format';
 
 export default {
