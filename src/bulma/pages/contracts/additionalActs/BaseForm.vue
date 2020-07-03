@@ -1,6 +1,5 @@
 <template>
     <modal class="additional-act-modal"
-        show
         v-on="$listeners">
         <div class="has-background-white">
             <enso-form class="box has-background-light"
@@ -13,7 +12,7 @@
                         v-bind="props"/>
                 </template>
                 <template v-slot:extends_contract="props"
-                    v-if="!contract.renews_automatically" >
+                    v-if="!contract.renews_automatically">
                     <form-field v-bind="props"
                         @input="form.field('expires_at').meta.hidden = !$event"/>
                 </template>
