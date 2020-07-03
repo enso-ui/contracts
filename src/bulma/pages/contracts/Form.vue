@@ -28,7 +28,7 @@
                         <div class="column  is-centered">
                             <documents :id="$route.params.contract"
                                 ref="documents"
-                                type="LaravelEnso\Contracts\App\Models\Contract"
+                                type="LaravelEnso\Contracts\Models\Contract"
                                 @update="$set(count, 'Files', $refs.documents.count)"/>
                         </div>
                     </tab>
@@ -41,7 +41,7 @@
 <script>
 import { EnsoForm, FormField } from '@enso-ui/forms/bulma';
 import { Tab } from '@enso-ui/tabs/bulma';
-import { Accessories, Documents } from '@enso-ui/accessories/bulma';
+import { Accessories, Documents } from '@enso-ui/bulma';
 import AdditionalActs from './additionalActs/List.vue';
 import {mapState} from "vuex";
 
