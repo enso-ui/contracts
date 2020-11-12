@@ -52,7 +52,7 @@ import { files } from '@enso-ui/mixins';
 import formatDistance from '@enso-ui/ui/src/modules/plugins/date-fns/formatDistance';
 import format from '@enso-ui/ui/src/modules/plugins/date-fns/format';
 import Confirmation from '@enso-ui/confirmation/bulma';
-import Avatar from '@enso-ui/ui/src/bulma/pages/administration/users/components/Avatar.vue';
+import Avatar from '@enso-ui/users/src/bulma/pages/users/components/Avatar.vue';
 
 library.add(faEye, faPencilAlt);
 
