@@ -1,6 +1,6 @@
 {
   "name": "@enso-ui/contracts",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Basic contracts package",
   "main": "src/bulma/pages/contracts/Index.vue",
   "scripts": {
