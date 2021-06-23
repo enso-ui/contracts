@@ -1,5 +1,5 @@
 <template>
-    <div class="box has-background-light raises-on-hover file-box has-padding-large">
+    <div class="box has-background-light raises-on-hover file-box p-3">
         <avatar class="is-32x32"
             :user="additionalAct.owner"/>
         <h5 v-tooltip="additionalAct.title"

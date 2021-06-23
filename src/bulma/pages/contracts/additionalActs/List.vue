@@ -29,7 +29,7 @@
                     </span>
                 </p>
                 <p class="control">
-                    <a class="button is-rounded is-small is-bold has-margin-left-medium"
+                    <a class="button is-rounded is-small is-bold ml-2"
                         @click="fetch()">
                         <span>
                             {{ i18n('Reload') }}
@@ -40,7 +40,7 @@
                     </a>
                 </p>
             </div>
-            <div class="columns is-multiline has-margin-top-large">
+            <div class="columns is-multiline mt-3">
                 <div class="column is-half-touch is-half-desktop is-one-third-widescreen"
                     v-for="(additionalAct, index) in filteredAdditionalActs"
                     :key="additionalAct.id">
